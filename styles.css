@@ -148,6 +148,7 @@ header > * {
     }
 
     .navbar > a {
+        color: hsl(233, 8%, 62%);
         text-align: center;
         padding-block: 1rem;
         padding-inline: 1.4rem;
