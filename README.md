@@ -1,4 +1,5 @@
 # Project-easybank
 
 Rewsponsive web design made using HTML, CSS and JavaScript!
-https://user-images.githubusercontent.com/73250262/139589832-d8e46ca7-73e6-4f99-9342-5c3e1aead338.jpg
+
+![desktop-preview](https://user-images.githubusercontent.com/73250262/139589911-8c38e92a-59f5-4e39-aaec-b4ce8a72d909.jpg)
