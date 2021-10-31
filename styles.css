@@ -1,0 +1,516 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+main > * > * {
+    padding-inline: min(10%, 9rem);
+}
+main{
+    display: grid;
+    grid-template: 
+        "sectionOne" auto
+        "midSection" auto
+        "botSection" auto
+        "footer" auto
+        / 1fr;
+}
+
+h1{
+    font-weight: 500;
+    font-size: clamp(2em, 5vw, 3em);
+    line-height: 1.2;
+}
+
+button{
+    padding: .7rem;
+    padding-inline: 1.7rem;
+    border-radius: 30px;
+    border: 0;
+    background-image: linear-gradient(to bottom right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+    opacity: .8;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+a{text-decoration: none;}
+h1,h2,h3,h4{color: hsl(233, 26%, 24%);}
+h5{color : hsl(233, 8%, 62%); font-weight: 500}
+p{color: hsl(233, 8%, 62%);}
+
+header{
+    background-color: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 0rem;
+    display: grid;
+    grid-template: ". logo navbar button ." 4rem 
+        / 10% auto 1fr auto 10%;
+    z-index: 1;
+}
+header a{
+    grid-area: logo;
+}
+header button{
+    grid-area: button;
+}
+header > * {
+    margin-block: auto;
+}
+
+.hamburger{
+    width: 2.5rem;
+    height: 1.5rem;
+    grid-area: burger;
+    display: none;
+    cursor: pointer;
+}
+@media (min-width: 800px) {
+    .navbar{
+        grid-area: navbar;
+        height: 100%;
+        display: flex;
+        margin: auto;
+        flex-grow: .2;
+    }
+    .navbar > * {
+        text-align: center;
+        padding-inline: 1rem;
+        margin-inline: auto;
+    }
+    
+    .navbar > a {
+        color: hsl(233, 8%, 62%);
+        padding-top: 1.4rem;
+    }
+    .navbar > a:hover{
+        color: hsl(233, 8%, 22%);
+        border-bottom: 4px solid hsl(136, 65%, 51%);
+        padding-top: 1.2rem;
+        box-sizing: border-box;
+        transition: ease-in-out 100ms;
+    }
+}
+
+@media (max-width: 800px) {
+    main#blur.active{
+        filter: blur(10px);
+        pointer-events: none;
+        transition: 500ms;
+    }
+
+    header{
+        filter: blur(0px);
+        grid-template: ". logo . burger ." 4rem 
+        / 5% auto 1fr auto 5%;
+    }
+    
+    #burger{
+        display: block;
+        transition: 1000ms;
+    }
+    #burger.active{
+        display: none;
+    }
+    #close{
+        display: none;
+        transition: 1000ms;
+    }
+    #close.active{
+        display: block;
+    }
+    
+    #popup{
+        background-color: white;
+        height: auto;
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+        top: 4rem;
+        margin-inline: 5%;
+        width: 90%;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        transition: 500ms;
+    }
+    #popup.active{
+        top: 5rem;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar > a {
+        text-align: center;
+        padding-block: 1rem;
+        padding-inline: 1.4rem;
+    }
+    .navbar > a:hover{
+        color: white;
+        background-color: hsl(136, 65%, 51%);
+    }
+
+    header > button {
+        display: none;
+    }
+}
+
+
+/* section One  */
+
+.sectionOne{
+    grid-area: sectionOne;
+    padding-inline: 0;
+    padding-bottom: 4rem;
+}
+
+.deskPic{
+    display: none;
+}
+
+.mobiles > img {
+    width: 90%;
+    height: auto;
+}
+
+.topBottomDiv{
+    text-align: center;
+}
+.topBottomDiv > * + * {
+    margin-top: 1.5rem;
+}
+@media (min-width: 800px) {
+    .sectionOne{
+        padding: 0;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        background-image: url(./images/bg-intro-desktop.svg);
+        background-repeat: no-repeat;
+        background-position: 40em 60%;
+    }
+    
+    .mobiles{
+        overflow: hidden;
+        display: block;
+        align-self: flex-start;
+        position: absolute;
+        top: -4vh;
+        width: 50vw;
+        height: auto;
+    }
+    .mobPic{
+        display: none;
+    }
+    .pics{
+        padding: 0;
+    }
+    
+    .deskPic{
+        position: absolute;
+        top: 0;
+        right: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    .topBottomDiv{
+        width: 30%;
+        padding-right: 20%;
+        padding-left: 11%;
+        text-align: start;
+        align-self: center;
+    }
+    .someContent{
+        width: 40vw;
+        height: 90vh;
+    }
+}
+@media (max-width: 800px) {
+    .pics{
+        padding-inline: 0;
+        width: 100%;
+        aspect-ratio: 1;
+        position: relative;
+        z-index: -1;
+    }
+
+    .mainPic{
+        overflow: hidden;
+        height: 100%;
+        margin-top: -5.5rem;
+    }
+
+    .mobiles{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -1.4rem;
+        left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mainPic > img {
+        width: 100%;
+    }
+}
+/* mid section */
+.midSection{
+    grid-area: midSection;
+    text-align: center;
+    background-color: hsl(0, 0%, 98%);
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+}
+
+.midSection > * + * {
+    padding-bottom: 2rem;
+}
+.midSection > * > * + * {
+    padding-bottom: 1rem;
+}
+
+.headerDiv{
+    padding-bottom: 2rem;
+}
+
+h2{
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+
+@media (min-width: 600px) {
+    .botSection,
+    .midSection{
+        padding-block: 4rem;
+        text-align: start;
+        display: grid;
+        grid-template: 
+            ". title title ." auto
+            ". cardOne cardTwo ." auto
+            ". cardThree cardFour ." auto
+            / 10% 1fr 1fr 10%;
+            grid-gap: 2rem;
+    }
+    .midSection > * {
+        padding-inline: 0;
+    }
+    h2{
+        text-align: start;
+        font-size: 2em;
+        font-weight: 500;
+    }
+    .botTitle,
+    .headerDiv{
+        grid-area: title;
+        padding: 0;
+        width: 70%;
+    }
+    .topIconDivs{
+        width: 100%;
+    }
+    
+    .cardOne{grid-area: cardOne;}
+    .cardTwo{grid-area: cardTwo;}
+    .cardThree{grid-area: cardThree;}
+    .cardFour{grid-area: cardFour;}
+
+    
+}
+@media (min-width: 1000px) {
+    .midSection{
+        grid-template: 
+            ". title title title . ." auto
+            ". cardOne cardTwo cardThree cardFour ." auto
+            / 10% 1fr 1fr 1fr 1fr 10%;
+    }
+}
+ /* bottom section */
+.botSection{
+    grid-area: botSection;
+}
+.articleDiv{
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding-inline: 0rem;
+    margin-inline: 1.5rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 0 12px -7px;
+}
+.articleDiv:hover{
+    transform: scale(1.07);
+    transition: ease-in-out 100ms;
+}
+.articleDiv > img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-inline: 0;
+}
+
+.content{
+    padding: 1.5rem;
+}
+.content > * + * {
+    padding-top: .5rem;
+}
+@media (min-width: 600px){
+    .articleDiv{
+        padding: 0;
+        margin: 0;
+    }
+    .articleDiv img{
+        width: 100%;
+        aspect-ratio: 1 / .7;
+    }
+}
+
+@media (min-width: 1200px) {
+    .botSection{
+        grid-template: 
+            ". title title title . ." auto
+            ". cardOne cardTwo cardThree cardFour ." 1fr
+            / 10% 1fr 1fr 1fr 1fr 10%;
+    }
+}
+/* footer */
+
+@media (max-width: 800px) {
+    footer{
+        width: 100%;
+        background-color: hsl(233, 26%, 24%);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-block: 2rem;
+        color: hsl(220, 16%, 96%);
+    }
+    
+    .iconDiv{
+        width: 50%;
+        margin-inline: auto;
+    }
+    .iconDiv > * {
+        margin-block: .7rem;
+    }
+    .icons{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .aboutDiv{
+        margin-block: 1rem;
+    }
+    .aboutDiv > * {
+        padding-block: .3rem;
+    }
+    .lastDiv > * {
+        margin-block: .7rem;
+    }
+    .attribution{
+        display: block;
+        width: fit-content;
+        text-align: center;
+        margin-inline: auto;
+    }
+}
+footer > * {
+    margin-block: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.icons img:hover{
+    filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+    transform: translate(0, -.2rem);
+    cursor: pointer;
+    transition: 200ms;
+}
+
+
+.aboutDiv > a,
+.aboutDiv > a:visited {
+    color: hsl(220, 16%, 96%);
+}
+
+.aboutDiv a:hover{
+    color: hsl(136, 65%, 51%);
+    transition: 100ms;
+}
+
+.attribution > a,
+.attribution > a:visited{
+    color: hsl(136, 65%, 51%);
+}
+
+@media (min-width: 800px) {
+    footer{
+        width: 100%;
+        background-color: hsl(233, 26%, 24%);
+        color: hsl(220, 16%, 96%);
+        grid-area: footer;
+        display: grid;
+        grid-template: 
+            ". icons about about . request ." 1fr
+            " . icons about about attribution attribution ." min-content
+            / 10% auto auto auto auto auto 10%;
+        align-items: unset;
+        padding: 0;
+        padding-block: 2rem;
+        grid-column-gap: 2rem;
+        grid-row-gap: 2rem;
+    }
+    footer > * {
+        padding-inline: unset;
+    }
+    .iconDiv{
+        grid-area: icons;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 3rem;
+        margin-inline: auto;
+    }
+
+    .icons{
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .aboutDiv{
+        grid-area: about;
+        gap: .5rem;
+    }
+
+    .lastDiv{
+        grid-area: request;
+        gap: 1rem;
+        padding-inline: 0;
+    }
+
+    .attribution{
+        grid-area: attribution;
+        text-align: start;
+        display: block;
+        margin-inline: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .aboutDiv{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
